@@ -88,7 +88,61 @@ class RootViewController: UIViewController {
   @objc fileprivate func uploadPhoto() {
     // add code here
     
+    activityIndicator.startAnimating()
     
+    guard let image = imageView.image, let data = image.jpegData(compressionQuality: 1.0) else {
+      presentAlert(title: "Error", message: "Something went wrong")
+      return
+    }
+    
+    // Make UID
+    let imageName = UUID().uuidString
+    
+    // Make image reference
+    let imageReference = Storage.storage().reference()
+      .child(MyKeys.imagesFolder)
+      .child(imageName)
+    
+    imageReference.putData(data, metadata: nil) { (metadata, error) in
+      if let error = error {
+        self.presentAlert(title: "Error", message: error.localizedDescription)
+        return
+      }
+      
+      imageReference.downloadURL { (url, error) in
+        if let error = error {
+          self.presentAlert(title: "Error", message: error.localizedDescription)
+          return
+        }
+        
+        guard let url = url else {
+          self.presentAlert(title: "Error", message: "Something went wrong")
+          return
+        }
+        
+        // create data reference to firestore
+        let dataReference = Firestore.firestore().collection(MyKeys.imagesCollection).document()
+        let documentUID = dataReference.documentID
+        let urlString = url.absoluteString
+        
+        // mock data
+        let data = [
+          MyKeys.uid: documentUID,
+          MyKeys.imageUrl: urlString
+        ]
+        
+        dataReference.setData(data) { (error) in
+          if let error = error {
+            self.presentAlert(title: "Error", message: error.localizedDescription)
+            return
+          }
+          
+          UserDefaults.standard.set(documentUID, forKey: MyKeys.uid)
+          self.imageView.image = UIImage()
+          self.presentAlert(title: "Success", message: "Successfully saved image to database")
+        }
+      }
+    }
   }
   
   @objc fileprivate func downloadPhoto() {
