@@ -78,9 +78,10 @@ class RootViewController: UIViewController {
     
     // unwrap image
     guard let image = imageView.image else { return }
-    
+    activityIndicator.startAnimating()
     // Saves photo to local device
-    UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+//    UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    saveToAlbum(named: "Swift 5 UIImage", image: image)
     
   }
   
@@ -99,8 +100,17 @@ class RootViewController: UIViewController {
   func saveToAlbum(named: String, image: UIImage) {
     // add code here
     
-    
-    
+    let album = CustomAlbum(name: named)
+    album.save(image: image) { (result) in
+      DispatchQueue.main.async {
+        switch result {
+        case .success(_):
+          self.presentAlert(title: "Success!", message: "Successfully saved photo to album \"\(named)")
+        case .failure(let error):
+          self.presentAlert(title: "Error", message: error.localizedDescription)
+        }
+      }
+    }
   }
   
   @objc func image(_ image: UIImage, didFinishSavingWithError err: Error?, contextInfo: UnsafeRawPointer) {
