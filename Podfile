@@ -6,7 +6,6 @@ target 'SwiftImageMania' do
   use_frameworks!
 
   # Pods for SwiftImageMania
-
 pod 'TinyConstraints', '~> 4.0.0'
 pod 'FirebaseStorage', '~> 3.1.1'
 pod 'FirebaseFirestore', '~> 1.2.1'

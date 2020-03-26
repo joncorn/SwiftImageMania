@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>491857290271-f44604n0cj4vratnhlf9h9i19qv4nra6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.491857290271-f44604n0cj4vratnhlf9h9i19qv4nra6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAY3en_quJ3-jWGOplxECFfnArNx_Z4LYc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>491857290271</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Rebeloper.SwiftImageMania</string>
+	<key>PROJECT_ID</key>
+	<string>swift-image-mania</string>
+	<key>STORAGE_BUCKET</key>
+	<string>swift-image-mania.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:491857290271:ios:744db1ab8e1a8e95</string>
+	<key>DATABASE_URL</key>
+	<string>https://swift-image-mania.firebaseio.com</string>
+</dict>
+</plist>
