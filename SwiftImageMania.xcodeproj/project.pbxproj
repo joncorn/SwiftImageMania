@@ -8,18 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		33F6F22EB7685359534F98CC /* Pods_SwiftImageMania.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407D1E5FFACC375434BE03E8 /* Pods_SwiftImageMania.framework */; };
+		6D09495A242D3B0300633AB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D094959242D3B0300633AB4 /* GoogleService-Info.plist */; };
 		C968922022645EA40008C73F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968921F22645EA40008C73F /* AppDelegate.swift */; };
 		C968922222645EA40008C73F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968922122645EA40008C73F /* RootViewController.swift */; };
 		C968922422645EA50008C73F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C968922322645EA50008C73F /* Assets.xcassets */; };
 		C968922722645EA50008C73F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C968922522645EA50008C73F /* LaunchScreen.storyboard */; };
 		C968923022648D4B0008C73F /* Error+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968922E22648D4A0008C73F /* Error+.swift */; };
 		C968923122648D4B0008C73F /* CustomAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C968922F22648D4B0008C73F /* CustomAlbum.swift */; };
-		C9689233226490850008C73F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9689232226490850008C73F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B4E67F4CEC7AEAFDB7837A4 /* Pods-SwiftImageMania.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftImageMania.release.xcconfig"; path = "Target Support Files/Pods-SwiftImageMania/Pods-SwiftImageMania.release.xcconfig"; sourceTree = "<group>"; };
 		407D1E5FFACC375434BE03E8 /* Pods_SwiftImageMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftImageMania.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D094959242D3B0300633AB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C59AB67FEB879E5F8B716AF1 /* Pods-SwiftImageMania.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftImageMania.debug.xcconfig"; path = "Target Support Files/Pods-SwiftImageMania/Pods-SwiftImageMania.debug.xcconfig"; sourceTree = "<group>"; };
 		C968921C22645EA40008C73F /* SwiftImageMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftImageMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C968921F22645EA40008C73F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +30,6 @@
 		C968922822645EA50008C73F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C968922E22648D4A0008C73F /* Error+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+.swift"; sourceTree = "<group>"; };
 		C968922F22648D4B0008C73F /* CustomAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlbum.swift; sourceTree = "<group>"; };
-		C9689232226490850008C73F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,7 @@
 				C968922322645EA50008C73F /* Assets.xcassets */,
 				C968922522645EA50008C73F /* LaunchScreen.storyboard */,
 				C968922822645EA50008C73F /* Info.plist */,
-				C9689232226490850008C73F /* GoogleService-Info.plist */,
+				6D094959242D3B0300633AB4 /* GoogleService-Info.plist */,
 				C968922F22648D4B0008C73F /* CustomAlbum.swift */,
 				C968922E22648D4A0008C73F /* Error+.swift */,
 			);
@@ -154,9 +154,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9689233226490850008C73F /* GoogleService-Info.plist in Resources */,
 				C968922422645EA50008C73F /* Assets.xcassets in Resources */,
 				C968922722645EA50008C73F /* LaunchScreen.storyboard in Resources */,
+				6D09495A242D3B0300633AB4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
