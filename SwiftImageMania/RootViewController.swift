@@ -146,7 +146,7 @@ class RootViewController: UIViewController {
   }
   
   @objc fileprivate func downloadPhoto() {
-    // add code here
+    
     
     
   }
