@@ -75,8 +75,12 @@ class RootViewController: UIViewController {
   }
   
   @objc fileprivate func savePhoto() {
-    // add code here
     
+    // unwrap image
+    guard let image = imageView.image else { return }
+    
+    // Saves photo to local device
+    UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     
   }
   
