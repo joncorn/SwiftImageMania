@@ -147,8 +147,41 @@ class RootViewController: UIViewController {
   
   @objc fileprivate func downloadPhoto() {
     
+    activityIndicator.startAnimating()
     
+    guard let uid = UserDefaults.standard.value(forKey: MyKeys.uid) else {
+      self.presentAlert(title: "Error", message: "Something went wrong")
+      return
+    }
     
+    let query = Firestore.firestore()
+      .collection(MyKeys.imagesCollection)
+      .whereField(MyKeys.uid, isEqualTo: uid)
+    
+    query.getDocuments { (snapshot, error) in
+      if let error = error {
+        self.presentAlert(title: "Error", message: error.localizedDescription)
+        return
+      }
+      
+      guard let snapshot = snapshot,
+        let data = snapshot.documents.first?.data(),
+        let urlString = data[MyKeys.imageUrl] as? String,
+        let url = URL(string: urlString) else {
+        self.presentAlert(title: "Error", message: "There was an error")
+        return
+      }
+      
+      let resource = ImageResource(downloadURL: url)
+      self.imageView.kf.setImage(with: resource) { (result) in
+        switch result {
+        case .success(_):
+          self.presentAlert(title: "Success", message: "Successfully downloaded from the database")
+        case .failure(let error):
+          self.presentAlert(title: "Error", message: error.localizedDescription)
+        }
+      }
+    }
   }
   
   func saveToAlbum(named: String, image: UIImage) {
