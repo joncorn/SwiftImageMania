@@ -77,126 +77,26 @@ class RootViewController: UIViewController {
   @objc fileprivate func savePhoto() {
     // add code here
     
-    guard let image = imageView.image else { return }
-    activityIndicator.startAnimating()
     
-    //        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-    saveToAlbum(named: "Swift 5 UIImage", image: image)
   }
   
   @objc fileprivate func uploadPhoto() {
     // add code here
-    activityIndicator.startAnimating()
     
-    guard let image = imageView.image,
-      let data = image.jpegData(compressionQuality: 1.0) else {
-        presentAlert(title: "Error", message: "Something went wrong")
-        return
-    }
     
-    let imageName = UUID().uuidString
-    
-    let imageReference = Storage.storage().reference()
-      .child(MyKeys.imagesFolder)
-      .child(imageName)
-    
-    imageReference.putData(data, metadata: nil) { (metadata, err) in
-      if let err = err {
-        self.presentAlert(title: "Error", message: err.localizedDescription)
-        return
-      }
-      
-      imageReference.downloadURL(completion: { (url, err) in
-        if let err = err {
-          self.presentAlert(title: "Error", message: err.localizedDescription)
-          return
-        }
-        
-        guard let url = url else {
-          self.presentAlert(title: "Error", message: "Something went wrong")
-          return
-        }
-        
-        let dataReference = Firestore.firestore().collection(MyKeys.imagesCollection).document()
-        let documentUid = dataReference.documentID
-        
-        let urlString = url.absoluteString
-        
-        let data = [
-          MyKeys.uid: documentUid,
-          MyKeys.imageUrl: urlString
-        ]
-        
-        dataReference.setData(data, completion: { (err) in
-          if let err = err {
-            self.presentAlert(title: "Error", message: err.localizedDescription)
-            return
-          }
-          
-          UserDefaults.standard.set(documentUid, forKey: MyKeys.uid)
-          self.imageView.image = UIImage()
-          self.presentAlert(title: "Success", message: "Successfully save image to database")
-        })
-        
-      })
-    }
   }
   
   @objc fileprivate func downloadPhoto() {
     // add code here
-    activityIndicator.startAnimating()
     
-    guard let uid = UserDefaults.standard.value(forKey: MyKeys.uid) else {
-      self.presentAlert(title: "Error", message: "Something went wrong")
-      return
-    }
-    
-    let query = Firestore.firestore()
-      .collection(MyKeys.imagesCollection)
-      .whereField(MyKeys.uid, isEqualTo: uid)
-    
-    query.getDocuments { (snapshot, err) in
-      if let err = err {
-        self.presentAlert(title: "Error", message: err.localizedDescription)
-        return
-      }
-      
-      guard let snapshot = snapshot,
-        let data = snapshot.documents.first?.data(),
-        let urlString = data[MyKeys.imageUrl] as? String,
-        let url = URL(string: urlString) else {
-          self.presentAlert(title: "Error", message: "Something went wrong")
-          return
-      }
-      
-      let resource = ImageResource(downloadURL: url)
-      self.imageView.kf.setImage(with: resource, completionHandler: { (result) in
-        switch result {
-        case .success(_):
-          self.presentAlert(title: "Success", message: "Successfully download image from database")
-        case .failure(let err):
-          self.presentAlert(title: "Error", message: err.localizedDescription)
-        @unknown default:
-          print("It looks like Apple has added a new case here...")
-        }
-      })
-    }
     
   }
   
   func saveToAlbum(named: String, image: UIImage) {
     // add code here
-    let album = CustomAlbum(name: named)
-    album.save(image: image) { (result) in
-      DispatchQueue.main.async {
-        switch result {
-        case .success(_):
-          self.presentAlert(title: "Succes", message: "Succesfully save photo to album \"\(named)\"")
-        case .failure(let err):
-          self.presentAlert(title: "Error", message: err.localizedDescription)
-        }
-      }
-    }
+    
+    
+    
   }
   
   @objc func image(_ image: UIImage, didFinishSavingWithError err: Error?, contextInfo: UnsafeRawPointer) {
